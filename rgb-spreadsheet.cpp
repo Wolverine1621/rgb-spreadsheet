@@ -33,30 +33,42 @@ void writeFile(vector<unsigned char>& image, unsigned int& width, unsigned int& 
 	}
 }
 
-int main() {
+int main(int argc, char* argv[]) {
 	// Image decoding
 	vector<unsigned char> image;
 	unsigned int width, height;
-
 	string filename;
-	cout << "File name/path (PNG): ";
-	cin >> filename;
+	string outputFilename;
+	
+	if (argc > 1) {
+		filename = argv[1];	
+		
+		if (argc == 3) {
+			outputFilename = argv[2];
+		}
+	} else {
+		cout << "File name/path (PNG): ";
+		cin >> filename;
+	}
 
 	decodeImage(image, width, height, filename);
 	
+	// Error handling
 	if (image.size() == 0) {
 		return 1;
 	}
 
 	// File output
-	string filenameTruncated;
-	filenameTruncated = filename.substr(0, filename.find('.'));
+	if (argc != 3) {  // If output filename isn't provided, generate one
+		string filenameTruncated = filename.substr(0, filename.find('.'));
 
-	stringstream outputFilename;
-	outputFilename << filenameTruncated << "_rgbvalues.csv";
-
+		stringstream outputFilenameStream;
+		outputFilenameStream << filenameTruncated << "_rgbvalues.csv";
+		outputFilename = outputFilenameStream.str();
+	}
+	
 	ofstream outfile;
-	outfile.open(outputFilename.str());
+	outfile.open(outputFilename);
 
 	writeFile(image, width, height, outfile);
 
