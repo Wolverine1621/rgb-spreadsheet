@@ -16,4 +16,4 @@ Example with arguments: `./rgb-spreadsheet [imageFilename].png [outputFilename].
 
 
 ### Releases
-Latest release (64-bit Windows): 
+[Latest release (64-bit Windows)](https://github.com/Wolverine1621/rgb-spreadsheet/releases/latest)
