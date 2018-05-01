@@ -11,7 +11,7 @@ Example with arguments: `./rgb-spreadsheet [imageFilename].png [outputFilename].
 
 
 ### Dependencies
-[Lodepng](http://lodev.org/lodepng/) is used for decoding of PNG images
+[lodepng](http://lodev.org/lodepng/) is used for decoding of PNG images
 
 
 
